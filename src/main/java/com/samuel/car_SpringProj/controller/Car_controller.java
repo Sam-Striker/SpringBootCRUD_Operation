@@ -11,33 +11,33 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/24239")
+@RequestMapping("/24239/car")
 public class Car_controller {
 
     @Autowired
     private Car_service car_service;
 
-    @PostMapping
+    @PostMapping("/save")
     public Car addCar(@RequestBody Car imodoka){
         return car_service.save(imodoka);
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/find/{id}")
     public Optional<Car> getCar(@PathVariable int id) {
         return car_service.getCar(id);
     }
 
-    @PutMapping()
+    @PutMapping(path ="/update")
     public Car updateCar(@RequestBody Car imodoka){
         return car_service.update(imodoka);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public String deleteCar(@PathVariable int id){
         return car_service.delete(id);
     }
 
-    @GetMapping
+    @GetMapping(path = "/listall")
     public List<Car> listCars() {
         return car_service.getCars();
     }
